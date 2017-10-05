@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Surface;
+import android.util.Log;
 
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
@@ -660,6 +661,8 @@ public class RCTCameraModule extends ReactContextBaseJavaModule
 
     @ReactMethod
     public void stopPreview(ReadableMap options) {
+        Log.i("IGOR", "stopPreview");
+
         RCTCamera instance = RCTCamera.getInstance();
         if (instance == null) return;
 
@@ -671,6 +674,8 @@ public class RCTCameraModule extends ReactContextBaseJavaModule
 
     @ReactMethod
     public void startPreview(ReadableMap options) {
+        Log.i("IGOR", "startPreview");
+
         RCTCamera instance = RCTCamera.getInstance();
         if (instance == null) return;
 
@@ -682,6 +687,7 @@ public class RCTCameraModule extends ReactContextBaseJavaModule
 
     @ReactMethod
     public void hasFlash(ReadableMap options, final Promise promise) {
+
         Camera camera = RCTCamera.getInstance().acquireCameraInstance(options.getInt("type"));
         if (null == camera) {
             promise.reject("No camera found.");
